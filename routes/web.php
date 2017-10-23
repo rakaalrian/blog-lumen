@@ -16,7 +16,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'api/v1'], function($router){
-  $router->group(['prefix' => 'posts'], function($router){
+  $router->group(['prefix' => 'posts', 'middleware' => 'auth'], function($router){
     $router->get('', 'PostsController@index');
     $router->post('add', 'PostsController@create');
     $router->get('show/{id}', 'PostsController@show');
